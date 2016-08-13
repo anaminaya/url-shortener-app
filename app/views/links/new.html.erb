@@ -1,0 +1,25 @@
+<section>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="product_single">
+            <h2>Create a new link:</h2>
+
+
+            <%= form_tag '/link', method: :post do %>
+
+              <div>
+                <%= label_tag :slug %>
+                <%= text_field_tag :slug, @links.slug%>
+              </div>
+
+              <div>
+                <%= label_tag :target_url %>
+                <%= text_field_tag :target_url, @links.target_url %>
+              </div>
+
+              <%= submit_tag "Create link", class: 'btn btn-primary' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
