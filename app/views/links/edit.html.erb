@@ -2,7 +2,7 @@
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
           <div class="product_single">
-            <h2>Create a new link:</h2>
+            <h2>Edit link:</h2>
 
             <% if @link.errors.any? %>
             <div id="error_explanation">
@@ -17,7 +17,7 @@
           <% end %>
 
 
-            <%= form_tag '/link', method: :post do %>
+          <%= form_tag("/link/#{@link.id}", method: 'patch') do %>
 
               <div>
                 <%= label_tag :slug %>
@@ -29,7 +29,7 @@
                 <%= text_field_tag :target_url, @link.target_url %>
               </div>
 
-              <%= submit_tag "Create link", class: 'btn btn-primary' %>
+              <%= submit_tag "Edit link", class: 'btn btn-primary' %>
             <% end %>
           </div>
         </div>

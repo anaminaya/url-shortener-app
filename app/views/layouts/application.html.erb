@@ -11,15 +11,8 @@
   <div class="alert alert-<%= name %> alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert">
     <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <% if message.is_a?(Array) %>
-    <ul>
-      <% message.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
-    <% else  %>
     <p><%= message %></p>
-    <% end %>
+
   </div>
   <% end %>
 

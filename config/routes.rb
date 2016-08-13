@@ -71,9 +71,12 @@ Rails.application.routes.draw do
   get '/link' => 'links#new'
   post '/link' => 'links#create'
 
+  get 'link/:id' => 'links#show'
 
-
-
+  get '/link/:id/edit'=> 'links#edit'
+  patch '/link/:id'=> 'links#update'
+  
+  delete '/link/:id' => 'links#destroy'
 
 
 
