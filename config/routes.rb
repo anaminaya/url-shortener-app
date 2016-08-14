@@ -9,6 +9,9 @@ Rails.application.routes.draw do
      root 'devise/registrations#new', as: :unauthenticated_root
    end
  end
+ resources :links
+
+ get '/:slug' => 'visits#create'
 
  get '/links' => 'links#index'
 
@@ -22,7 +25,7 @@ Rails.application.routes.draw do
 
  delete '/links/:id' => 'links#destroy'
 
- 
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

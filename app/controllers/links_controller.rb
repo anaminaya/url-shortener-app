@@ -17,7 +17,7 @@ class LinksController < ApplicationController
 
     if @link.valid?
     flash[:success]= "Link successfully created"
-    redirect_to '/links/index'
+    redirect_to '/links'
     else
       flash[:danger]= @link.errors.full_messages
       render "new.html.erb"
@@ -35,7 +35,7 @@ class LinksController < ApplicationController
 
     unless @link
       not_found
-      redirect_to '/links/index'
+      redirect_to '/links'
     end
 
   end
@@ -66,7 +66,7 @@ class LinksController < ApplicationController
     @link = Link.find_by(id: params[:id], user_id: current_user.id)
     @link.destroy
     flash[:danger]= " Link was successfully destroyed"
-    redirect_to '/links/index'
+    redirect_to '/links'
   end
 
 end
