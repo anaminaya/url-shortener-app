@@ -14,9 +14,9 @@
     </tr>
   <% end %>
 <table>
-  <% if current_user && current_user.admin %>
-  <%= link_to "Add New Link", "link/new", class: "btn btn-info" %>
-  <%= link_to "Edit Link", "link/#{@link.id}/edit", class: "btn btn-info" %>
-  <%= link_to "Link Stats", "link/show", class: "btn btn-info" %>
-  <%= link_to "Delete Link", "link/#{@link.id}/destroy", {method: :delete, class: "btn btn-danger" } %>
+  <% if current_user %>
+  <%= link_to "Add New Link", "links/new", class: "btn btn-info" %>
+  <%= link_to "Edit Link", "links/#{@link.id}/edit", class: "btn btn-info" %>
+  <%= link_to "Link Stats", "links/show", class: "btn btn-info" %>
+  <%= link_to "Delete Link", "links/#{@link.id}/destroy", {method: :delete, class: "btn btn-danger" } %>
   <% end %>

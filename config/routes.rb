@@ -10,6 +10,20 @@ Rails.application.routes.draw do
    end
  end
 
+ get '/links' => 'links#index'
+
+ get '/links' => 'links#new'
+ post '/links' => 'links#create'
+
+ get 'links/:id' => 'links#show'
+
+ get '/links/:id/edit'=> 'links#edit'
+ patch '/links/:id'=> 'links#update'
+
+ delete '/links/:id' => 'links#destroy'
+
+ 
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -64,32 +78,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-
-  get '/link' => 'links#index'
-
-  get '/link' => 'links#new'
-  post '/link' => 'links#create'
-
-  get 'link/:id' => 'links#show'
-
-  get '/link/:id/edit'=> 'links#edit'
-  patch '/link/:id'=> 'links#update'
-  
-  delete '/link/:id' => 'links#destroy'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 end

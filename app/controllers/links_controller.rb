@@ -4,9 +4,8 @@ class LinksController < ApplicationController
   def index
     if current_user
       @links = Link.where(user_id: current_user.id)
-    else
-      render "index.html.erb"
     end
+    render "index.html.erb"
   end
 
   def create
@@ -17,7 +16,7 @@ class LinksController < ApplicationController
 
     if @link.valid?
     flash[:success]= "Link successfully created"
-    redirect_to action: "index"
+    redirect_to '/links/index'
     else
       flash[:danger]= @link.errors.full_messages
       render "new.html.erb"
@@ -25,6 +24,7 @@ class LinksController < ApplicationController
   end
 
   def new
+    @link = Link.new
     render "new.html.erb"
   end
 
@@ -34,17 +34,21 @@ class LinksController < ApplicationController
   end
 
   def show
-    unless @link = Link.find_by(id: params[:id])
+    @link = Link.find_by(id: params[:id])
+
+    unless @link
       not_found
+      redirect_to '/links/index'
     end
+
   end
 
   def edit
-    @link = Link.find_by(id: params[:id])
+    @link = Link.find_by(id: params[:id], user_id: current_user.id)
   end
 
   def update
-    @link = Link.find_by(id: params[:id])
+    @link = Link.find_by(id: params[:id], user_id: current_user.id)
     @link.update(
     slug:params[:slug],
     target_url:params[:target_url],
@@ -53,7 +57,7 @@ class LinksController < ApplicationController
 
     if @link.valid?
       flash[:success]= "Link successfully updated"
-      redirect_to "/link/#{@link.id}"
+      redirect_to "/links/#{@link.id}"
     else
       flash[:danger]= @link.errors.full_messages
       render "edit.html.erb"
@@ -61,16 +65,10 @@ class LinksController < ApplicationController
   end
 
   def destroy
-    @link = Link.find_by(id: params[:id])
+    @link = Link.find_by(id: params[:id], user_id: current_user.id)
     @link.destroy
     flash[:danger]= " Link was successfully destroyed"
-    redirect_to '/link'
+    redirect_to '/links/index'
   end
-
-
-
-
-
-
 
 end
