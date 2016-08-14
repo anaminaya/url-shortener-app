@@ -13,6 +13,7 @@ class LinksController < ApplicationController
     slug:params[:slug],
     target_url:params[:target_url],
     )
+    @link.standardize_target_url!
 
     if @link.valid?
     flash[:success]= "Link successfully created"
@@ -28,10 +29,6 @@ class LinksController < ApplicationController
     render "new.html.erb"
   end
 
-  def standardize_target_url!
-    target_url.gsub!("http://", "")
-    target_url.gsub!("https://", "")
-  end
 
   def show
     @link = Link.find_by(id: params[:id])
@@ -53,6 +50,7 @@ class LinksController < ApplicationController
     slug:params[:slug],
     target_url:params[:target_url],
     )
+    @link.standardize_target_url!
 
 
     if @link.valid?
